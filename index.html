@@ -4,7 +4,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Testeando performance sin morir en el intento: Slides</title>
+		<title>Test performance and not die trying: Slides</title>
 		<meta name="description" content="Slides">
 
 		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
@@ -18,21 +18,15 @@
 }
 
 		</style>
-		<!-- New Relic -->
-		<script type="text/javascript">
-		window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(13),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,-1!==o.indexOf("dev")&&(s.dev=!0),-1!==o.indexOf("nr_dev")&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(s){try{i("ierr",[s,(new Date).getTime(),!0])}catch(c){}}return"function"==typeof f?f.apply(this,a(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(14),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(7),t(6),"addEventListener"in window&&t(4),c.xhrWrappable&&t(8),u=!0)}s.on("fn-start",function(t,e,n){u&&(d+=1)}),s.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(7),s=t(6);t("loader").features.stn=!0,t(5);var c=NREUM.o.EV;o.on("fn-start",function(t,e){var n=t[0];n instanceof c&&(this.bstStart=Date.now())}),o.on("fn-end",function(t,e){var n=t[0];n instanceof c&&i("bst",[n,e,this.bstStart,Date.now()])}),a.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),a.on("fn-end",function(t,e){i("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),s.on("fn-start",function(){this.bstStart=Date.now()}),s.on("fn-end",function(t,e){i("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),o.on("pushState-start",function(t){this.time=Date.now(),this.startPath=location.pathname+location.hash}),o.on("pushState-end",function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.clearResourceTimings?window.performance.addEventListener("resourcetimingbufferfull",function(t){i("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1):window.performance.addEventListener("webkitresourcetimingbufferfull",function(t){i("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1)),document.addEventListener("scroll",r,!1),document.addEventListener("keypress",r,!1),document.addEventListener("click",r,!1)}},{}],4:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty("addEventListener");)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,["addEventListener","removeEventListener"],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(15)(a),c=t("gos");e.exports=a,o(window),"getPrototypeOf"in Object?(r(document),r(XMLHttpRequest.prototype)):XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&o(XMLHttpRequest.prototype),a.on("addEventListener-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=c(n,"nr@wrapped",function(){return s(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&s.inPlace(n,["handleEvent"],"fn-")}}),a.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],5:[function(t,e,n){var r=t("ee").get("history"),o=t(15)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],6:[function(t,e,n){var r=t("ee").get("raf"),o=t(15)(r);e.exports=r,o.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],7:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(15)(i);e.exports=i,a.inPlace(window,["setTimeout","setImmediate"],"setTimer-"),a.inPlace(window,["setInterval"],"setInterval-"),a.inPlace(window,["clearTimeout","clearImmediate"],"clearTimeout-"),i.on("setInterval-start",r),i.on("setTimer-start",o)},{}],8:[function(t,e,n){function r(t,e){e=e||this;var n=a.context(e);e.readyState>3&&!n.resolved&&(n.resolved=!0,a.emit("xhr-resolved",[],e));try{f.inPlace(e,p,"fn-",o)}catch(r){}}function o(t,e){return e}function i(t,e){for(var n in t)e[n]=t[n];return e}var a=t("ee").get("xhr"),s=t(4),c=t(15),f=c(a),u=c(s),d=NREUM.o,l=d.XHR,p=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout","onreadystatechange"];e.exports=a,window.XMLHttpRequest=function(t){var e=new l(t);try{a.emit("new-xhr",[e],e),e.hasOwnProperty("addEventListener")&&u.inPlace(e,["addEventListener","removeEventListener"],"-",o),e.addEventListener("readystatechange",r,!1)}catch(n){try{a.emit("internal-error",[n])}catch(i){}}return e},i(l,XMLHttpRequest),XMLHttpRequest.prototype=l.prototype,f.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),a.on("send-xhr-start",r),a.on("open-xhr-start",r)},{}],9:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;l>r;r++)t.removeEventListener(d[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return i(r)}function i(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}function a(t,e){var n=f(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(10),u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(12),m=window.XMLHttpRequest;s.features.xhr=!0,t(4),t(8),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,h&&(h>34||10>h)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},a(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var a=i(r);a&&(n.txSize=a)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;l>s;s++)e.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],10:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],11:[function(t,e,n){function r(t,e){return function(){o(t,[(new Date).getTime()].concat(a(arguments)),null,e)}}var o=t("handle"),i=t(13),a=t(14);"undefined"==typeof window.newrelic&&(newrelic=NREUM);var s=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit"],c=["addPageAction"],f="api-";i(s,function(t,e){newrelic[e]=r(f+e,"api")}),i(c,function(t,e){newrelic[e]=r(f+e)}),e.exports=newrelic,newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),o("err",[t,(new Date).getTime()])}},{}],12:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],13:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],14:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],15:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(14),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],s])}f(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],s),l}finally{f(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!c){c=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}c=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),s=a.length,c=0;s>c;c++)a[c].apply(i,r);var u=f[v[n]];return u&&u.push([w,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){c(t,function(t,n){e=e||"feature",v[n]=e,e in f||(f[e]=[])})}var m={},v={},w={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return w}function i(){return new r}var a="nr@context",s=t("gos"),c=t(13),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!m++){var t=h.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(l,function(e,n){t[e]||(t[e]=n)});var n="https"===d.split(":")[0]||t.sslForHttp;h.proto=n?"https://":"http://",s("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=h.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){s("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var s=t("handle"),c=t(13),f=window,u=f.document;NREUM.o={ST:setTimeout,XHR:f.XMLHttpRequest,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(11);var d=(""+location).split("?")[0],l={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-892.min.js"},p=window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent),h=e.exports={offset:a(),origin:d,features:{},xhrWrappable:p};u.addEventListener?(u.addEventListener("DOMContentLoaded",i,!1),f.addEventListener("load",r,!1)):(u.attachEvent("onreadystatechange",o),f.attachEvent("onload",r)),s("mark",["firstbyte",a()],null,"api");var m=0},{}]},{},["loader",2,9,3]);
-		;NREUM.info={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",licenseKey:"be2f6ae56c",applicationID:"21810338",sa:1,agent:"js-agent.newrelic.com/nr-892.min.js"}
-		</script>
 	</head>
 	<body class="reveal-viewport theme-font-montserrat theme-color-blue-yellow">
 		<div class="reveal">
 			<div class="slides">
 				<section data-id="46047c961b2a401b9e451132a144b2a8"><div class="sl-block" data-block-type="text" style="width: 855px; left: 53px; top: 36px; height: auto;" data-block-id="7aabf2aca6e3b0136ffeacdd8d6645dc"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
-<h1>CÓMO TESTEAR<br>
-PERFORMANCE</h1>
+<h1>HOW TO TEST PERFORMANCE</h1>
 </div></div>
 <div class="sl-block" data-block-type="text" data-block-id="55db063e1f7a5c16a58c2c11e61f61d1" style="height: auto; min-width: 30px; min-height: 30px; width: 664px; left: 148px; top: 230px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
-<h3>SIN MORIR EN EL INTENTO</h3>
+<h3>AND NOT DIE TRYING</h3>
 </div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 664px; left: 160px; top: 497px;" data-block-id="221e0a8d0e59d4fbf6968e7431911a84"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
 <h3>Diego Cardozo</h3>
@@ -41,181 +35,186 @@ PERFORMANCE</h1>
 
 <h3>@NetSuite @diecard</h3>
 </div></div>
-<div class="sl-block" data-block-type="image" data-block-id="f2a8a2556aa45c74a133d46d1d7a9d11" style="min-width: 30px; min-height: 30px; width: 360px; height: 180px; left: 300px; top: 303px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="1000" data-natural-height="500" data-src="testinguy/2531238-TestingUY.png"></div></div></section><section data-id="997cccf991c40dc85b49d69451e9aba4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 119px; height: auto;" data-block-id="029532e76e1f0b5a48dbd518face2242"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<div class="sl-block" data-block-type="image" data-block-id="f2a8a2556aa45c74a133d46d1d7a9d11" style="min-width: 30px; min-height: 30px; width: 360px; height: 180px; left: 300px; top: 303px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="1000" data-natural-height="500" data-src="testinguy-en/2531238-TestingUY.png"></div></div></section><section data-id="997cccf991c40dc85b49d69451e9aba4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 119px; height: auto;" data-block-id="029532e76e1f0b5a48dbd518face2242"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
 <h1>Agenda</h1>
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 288px; height: auto;" data-block-id="c36eea76334eb689a0da10f5c5c15acb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
 <ul>
 	<li>
-	<h2>¿Por qué?</h2>
+	<h2>Why it matters</h2>
 	</li>
 	<li>
-	<h2>Qué testear</h2>
+	<h2>What to test</h2>
 	</li>
 	<li>
-	<h2>Cómo testear</h2>
+	<h2>How to test</h2>
 	</li>
 </ul>
 </div></div></section><section data-id="13b084bff8af637ed90f49becd31f579"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 82px; height: auto;" data-block-id="4d75922cf551759465573796a3e96215"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
-<h2>¿Por qué performance?</h2>
+<h2>Why it matters</h2>
 
-<p>¿Por qué es importante para el negocio?</p>
+<p>Why is performance important for our business?</p>
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 246px; height: auto;" data-block-id="52f7b624daac69c48ef583b3eed3cde1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
 <ul>
 	<li class="fragment" data-fragment-index="0">
-<a href="http://assets.en.oreilly.com/1/event/29/Keynote%20Presentation%202.pdf" target="_blank">Google</a>: 2% mas lento = 2% menos búsquedas</li>
+<a href="http://assets.en.oreilly.com/1/event/29/Keynote%20Presentation%202.pdf" target="_blank">Google</a>: 2% slower = 2% less searches/user</li>
 	<li class="fragment" data-fragment-index="1">
-<a href="http://www.slideshare.net/stoyan/dont-make-me-wait-or-building-highperformance-web-applications#btnNext" target="_blank">Yahoo</a>: 400 ms mas rápido = 9% más tráfico</li>
+<a href="http://www.slideshare.net/stoyan/dont-make-me-wait-or-building-highperformance-web-applications#btnNext" target="_blank">Yahoo</a>: 400 ms faster = 9% more traffic</li>
 	<li class="fragment" data-fragment-index="2">
-<a href="http://radar.oreilly.com/2008/08/radar-theme-web-ops.html" target="_blank">Amazon</a>: 100ms mas rápido = 1% más ganancia</li>
+<a href="http://radar.oreilly.com/2008/08/radar-theme-web-ops.html" target="_blank">Amazon</a>: 100ms faster = 1% more revenue</li>
 	<li class="fragment" data-fragment-index="3">
-<a href="http://www.scribd.com/doc/16877317/Shopzillas-Site-Redo-You-Get-What-You-Measure" target="_blank">Shopzilla</a>: 5s más rápido
+<a href="http://www.scribd.com/doc/16877317/Shopzillas-Site-Redo-You-Get-What-You-Measure" target="_blank">Shopzilla</a>: 5s faster
 	<ul>
-		<li>25% más visitas</li>
-		<li>7 a 12% más ganancia</li>
+		<li>25% more site visits</li>
+		<li>7 to 12% more revenue</li>
 	</ul>
 	</li>
 	<li class="fragment" data-fragment-index="4">
-<a href="http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html" target="_blank">Google</a> toma en cuenta el tiempo de carga al rankear un sitio</li>
+<a href="http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html" target="_blank">Google</a> takes load times into account when<br>
+	ranking a site</li>
 </ul>
 </div></div></section><section data-id="6d3c13a1a1ed9c59d03d1ca4bc46e145"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 82px; height: auto;" data-block-id="919a4d7a3f4bb9ad9265922836379d6a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
-<h2>¿Por qué performance?</h2>
+<h2>Why it matters</h2>
 
-<p>¿Por qué es importante para uno mismo?</p>
+<p><span style="color:rgb(255, 255, 255)">Why is performance important for ourselves?</span></p>
 </div></div>
 <div class="sl-block" data-block-type="text" data-block-id="d02d7a9d8fee941cfa7ba2309ee6f5fc" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 326px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
-<h3 style="color: rgb(255, 255, 255);"><em>"La mejor parte del testing de performance es cuanto se aprende de tecnología en general"</em></h3>
+<h3 style="color:rgb(255, 255, 255)"><em>"The best part about performance testing is how much you learn about technology in general"</em></h3>
 </div></div></section><section data-id="c1cee4e6a9d2a07fb75739e0abb480e9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="ce01d4f15558e3f77c3207f0d8551192"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
-<h2>Qué testear</h2>
+<h2>What to test</h2>
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 110px; height: auto;" data-block-id="0c71b7fedfd995f9fe6d069b12904b30"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
 <p> </p>
 
-<p>¿Qué se mide al testear performance?</p>
+<p>What should we measure?</p>
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 280px; height: auto;" data-block-id="18998c352539f634e285fd8287cb86ca"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" dir="ui">
 <ul>
 	<li>
-	<h3>Tiempos de respuesta y velocidad</h3>
+	<h3>Response times and speed</h3>
 	</li>
 	<li>
-	<h3>Cantidad máxima de transacciones</h3>
+	<h3>How much load we can handle</h3>
 	</li>
 	<li>
-	<h3>Comportamiento del sistema</h3>
+	<h3>How the system behaves</h3>
 	</li>
 </ul>
 </div></div>
-<div class="sl-block" data-block-type="shape" data-block-id="cc8c9d28b62b9bf8a6cf5e0b9fcc78c4" style="min-width: 4px; min-height: 4px; width: 54px; height: 54px; left: 835px; top: 280px;"><div class="sl-block-content fragment" data-shape-type="arrow-left" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="true" style="z-index: 14;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 54 54"><polygon points="54,16.2 27,16.2 27,0 0,27 27,54 27,37.8 54,37.8 54,16.2" class="shape-element" fill="rgb(255, 255, 255)"></polygon></svg></div></div></section><section data-id="06956b393d5ec545e933fb591232fd7a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="43a55e0257d4c4fd81a44ac51ad81c3e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
-<h2>Qué testear</h2>
+<div class="sl-block" data-block-type="shape" data-block-id="cc8c9d28b62b9bf8a6cf5e0b9fcc78c4" style="min-width: 4px; min-height: 4px; width: 54px; height: 54px; left: 737px; top: 280px;"><div class="sl-block-content fragment" data-shape-type="arrow-left" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="true" style="z-index: 14;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 54 54"><polygon points="54,16.2 27,16.2 27,0 0,27 27,54 27,37.8 54,37.8 54,16.2" class="shape-element" fill="rgb(255, 255, 255)"></polygon></svg></div></div></section><section data-id="06956b393d5ec545e933fb591232fd7a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="43a55e0257d4c4fd81a44ac51ad81c3e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>What to test</h2>
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 110px; height: auto;" data-block-id="6dde27b6d2035217591abe5bff13650e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui">
 <p> </p>
 
-<p>Tener un objetivo - 3 alternativas</p>
+<p>Have a goal in mind - 3 alternatives</p>
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 231px; height: auto;" data-block-id="123bff07797b25894ff769d226fb7531"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
 <ul>
-	<li>Presupuesto de performance</li>
-	<li class="fragment" data-fragment-index="0">Twitter tiene el "time to first tweet"</li>
-	<li class="fragment" data-fragment-index="1">Google utiliza el modelo RAIL</li>
+	<li>Performance budget</li>
+	<li class="fragment" data-fragment-index="0">Business-specific goal
+	<ul>
+		<li class="fragment" data-fragment-index="1">Twitter's "time to first tweet"</li>
+	</ul>
+	</li>
+	<li class="fragment" data-fragment-index="1">Google's RAIL model</li>
 </ul>
 </div></div>
-<div class="sl-block" data-block-type="image" data-block-id="de3a89b18f884f36abcfe17ee68b5202" style="min-width: 30px; min-height: 30px; width: 579.167px; height: 210px; left: 191px; top: 373px;"><div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="1"><img style="" data-natural-width="1390" data-natural-height="504" data-src="testinguy/1851307-rail.png"></div></div></section><section data-id="e111ab1dbf5a74bc7b0675165b6bad6b">
+<div class="sl-block" data-block-type="image" data-block-id="de3a89b18f884f36abcfe17ee68b5202" style="min-width: 30px; min-height: 30px; width: 579.167px; height: 210px; left: 191px; top: 409px;"><div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="1"><img style="" data-natural-width="1390" data-natural-height="504" data-src="testinguy-en/1851307-rail.png"></div></div></section><section data-id="e111ab1dbf5a74bc7b0675165b6bad6b">
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="3f4ab987b5547b6c449af587eab0bb4c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
-<h2>Cómo testear</h2>
+<h2>How to test</h2>
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="3cc8995770dcd5cc2acbf9a687400c5c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
-<p>Primera regla</p>
+<p>First rule</p>
 </div></div>
 <div class="sl-block" data-block-type="shape" data-block-id="a21c4376eb673f67a7ad3fc924159f56" style="min-width: 4px; min-height: 4px; width: 143.2px; height: 179px; left: 329px; top: 377px;"><div class="sl-block-content fragment" data-shape-type="symbol-thin-arrow-up" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="true" style="z-index: 13;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="4 2 24 28"><g class="shape-element" fill="rgb(255, 255, 255)"><path d="M27.414 12.586l-10-10c-0.781-0.781-2.047-0.781-2.828 0l-10 10c-0.781 0.781-0.781 2.047 0 2.828s2.047 0.781 2.828 0l6.586-6.586v19.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-19.172l6.586 6.586c0.39 0.39 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586c0.781-0.781 0.781-2.047 0-2.828z"></path></g></svg></div></div>
 <div class="sl-block" data-block-type="text" data-block-id="7eb4aba32dc0197f797d98ccc5bb94e5" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 269px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="0">
-<h1>1. Medir</h1>
+<h1>1. Measure</h1>
 </div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 559px;" data-block-id="b8e4af693912fcb81f627ead79d72bfc"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-fragment-index="0">
-<h1>2. Optimizar</h1>
+<h1>2. Optimize</h1>
 </div></div>
 <div class="sl-block" data-block-type="shape" data-block-id="022946227c77d29ac1fce8ceb93d9edb" style="min-width: 4px; min-height: 4px; width: 158px; height: 183px; left: 481px; top: 377px;"><div class="sl-block-content fragment" data-shape-type="symbol-thin-arrow-down" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="true" style="z-index: 16;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="4 2 24 28"><g class="shape-element" fill="rgb(255, 255, 255)"><path d="M4.586 19.414l10 10c0.781 0.781 2.047 0.781 2.828 0l10-10c0.781-0.781 0.781-2.047 0-2.828s-2.047-0.781-2.828 0l-6.586 6.586v-19.172c0-1.105-0.895-2-2-2s-2 0.895-2 2v19.172l-6.586-6.586c-0.391-0.39-0.902-0.586-1.414-0.586s-1.024 0.195-1.414 0.586c-0.781 0.781-0.781 2.047 0 2.828z"></path></g></svg></div></div></section><section data-id="35130b358cff34ce35a437accf927f79">
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="9442e44adff9c990222a98063262c805"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
-<h2>Cómo testear</h2>
+<h2>How to test</h2>
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="c0ebe8416c6626c1d8f4db7f4066b5a2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
-<p>Segunda regla</p>
+<p>Second rule</p>
 </div></div>
-<div class="sl-block" data-block-type="image" data-block-id="fb11d1647ffd60fa041470a836139ee7" style="min-width: 30px; min-height: 30px; width: 720px; height: 461.032px; left: 120px; top: 210px;"><div class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="0"><img data-natural-width="620" data-natural-height="397" data-src="testinguy/2528709-Fight_Club.jpg"></div></div></section><section data-id="5364b746062ed952b4d0a4c6ba631fb1">
+<div class="sl-block" data-block-type="image" data-block-id="33154ab418377359ba63e62bbd1bb3cd" style="min-width: 30px; min-height: 30px; width: 696.524px; height: 446px; left: 132px; top: 210px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="620" data-natural-height="397" data-src="testinguy-en/2561910-Performance_testing_second_rule.jpg"></div></div></section><section data-id="5364b746062ed952b4d0a4c6ba631fb1">
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="3a516b8b3407fcc36851ef3b71ff102f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
-<h2>Cómo testear</h2>
+<h2>How to test</h2>
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="90371e9a871d2b76954e80866631f76c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
-<p>Alternativas</p>
+<p>Alternatives</p>
 </div></div>
 <div class="sl-block" data-block-type="text" data-block-id="5bf38541fcdbfccb493426d97cc3c49e" style="height: auto; min-width: 30px; min-height: 30px; width: 695px; left: 160px; top: 280px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-fragment-index="0">
-<p style="text-align: justify;">Se emula un browser donde se corre un caso de prueba y se registran los tiempos de respuesta</p>
+<p style="text-align:justify">Emulate a browser, run a test case and record response times for each request</p>
 </div></div>
 <div class="sl-block" data-block-type="text" data-block-id="c71de5b20cbaa8115c2ecb330faf535b" style="height: auto; min-width: 30px; min-height: 30px; width: 695px; left: 160px; top: 490px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-fragment-index="1">
-<p style="text-align: left;">Se envía información de performance directamente desde el usuario de forma pasiva</p>
+<p style="text-align:left">Passively send performance information directly from the user's application</p>
 </div></div>
 <div class="sl-block" data-block-type="text" data-block-id="d0df1735b6f7ec4f64f408e636d8ddfc" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 160px; top: 230px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="0">
-<h3 style="text-align: left;">Monitoreo Sintético</h3>
+<h3 style="text-align:left">Synthetic monitoring</h3>
 </div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 720px; left: 160px; top: 440px;" data-block-id="3f7f6142f5ced554fbe4e259393c8152"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="1">
-<h3 style="text-align:left">Monitoreo de usuarios reales (RUM)</h3>
+<h3 style="text-align:left">Real user monitoring (RUM)</h3>
 </div></div></section><section data-id="de1f9ed13b29719dd96e3218317d16d5"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 102px; height: auto;" data-block-id="eb6a0d9430ec3092f76be7d3cb4ee5aa"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
-<h2>Cómo testear</h2>
+<h2>How to test</h2>
 
-<p>Monitoreo Sintético</p>
+<p>Synthetic monitoring</p>
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 860px; left: 63px; top: 269px; height: auto;" data-block-id="13282ac86725fa11a13c1b7d9375a82e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
 <ul>
-	<li>Herramientras
+	<li>Tools
 	<ul>
 		<li>
-<a href="http://www.webpagetest.org/" target="_blank">WebPage Test</a> (gratuito)</li>
+<a href="http://www.webpagetest.org/" target="_blank">WebPage Test</a> (free, web)</li>
 		<li>
-<a href="https://developers.google.com/speed/pagespeed/insights/" target="_blank">Google PageSpeed Insights</a> (gratuito)</li>
+<a href="https://developers.google.com/speed/pagespeed/insights/" target="_blank">Google PageSpeed Insights</a> (free, web)</li>
 		<li>
-<a href="https://www.statuscake.com" target="_blank">StatusCake</a> (gratuito/pago)</li>
+<a href="https://www.statuscake.com" target="_blank">StatusCake</a> (free/paid, web)</li>
 		<li>
-<a href="http://my.keynote.com" target="_blank">Keynote/Dynatrace</a> (pago)</li>
+<a href="http://my.keynote.com" target="_blank">Keynote/Dynatrace</a> (paid, web)</li>
 		<li>
-<a href="https://results.monkop.com/d8af6f27-7b0e-4573-b806-8303946269e3/report/report/index.html" target="_blank">Monkop </a>(gratuito/pago, mobile)</li>
+<a href="https://results.monkop.com/d8af6f27-7b0e-4573-b806-8303946269e3/report/report/index.html" target="_blank">Monkop </a>(free/paid, mobile)</li>
 	</ul>
 	</li>
 </ul>
-</div></div></section><section data-id="eda8d4a85219c8cbc9a08d5bab4b8ede"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 103px; height: auto;" data-block-id="9d081a4c36f36b4cb21d45ef71673943"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
-<h2>Cómo testear</h2>
+</div></div></section><section data-id="eda8d4a85219c8cbc9a08d5bab4b8ede"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 103px; height: auto;" data-block-id="9d081a4c36f36b4cb21d45ef71673943"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" dir="ui">
+<h2>How to test</h2>
 
-<p>Monitoreo de usuarios reales</p>
+<p>Real user monitoring</p>
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="6f8ef616f53c2118f90a724dee1c86a8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
 <ul>
-	<li style="color:rgb(255, 255, 255)">Se sale al mercado con confianza y know how sobre como interpretar los datos obtenidos</li>
-	<li style="color:rgb(255, 255, 255)">Herramientras
+	<li style="color:rgb(255, 255, 255)">If RUM tools are used during testing, you can go live with know how on how to interpret the results</li>
+	<li style="color:rgb(255, 255, 255)">Tools
 	<ul>
 		<li style="color:rgb(255, 255, 255)">
-<a href="https://analytics.google.com" target="_blank">Google Analytics</a> (web/mobile)</li>
+<a href="https://analytics.google.com" target="_blank">Google Analytics</a> (free, web/mobile)</li>
 		<li style="color:rgb(255, 255, 255)">
-<a href="https://www.statuscake.com" target="_blank">StatusCake</a> (web)</li>
+<a href="https://www.statuscake.com" target="_blank">StatusCake</a> (free/paid, web)</li>
 		<li style="color:rgb(255, 255, 255)">
-<a href="http://newrelic.com/browser-monitoring" target="_blank">NewRelic</a>, <a href="https://www.pingdom.com" target="_blank">Pingdom</a> (web)</li>
+<a href="http://newrelic.com/browser-monitoring" target="_blank">NewRelic</a>, <a href="https://www.pingdom.com" target="_blank">Pingdom</a> (free/paid, web)</li>
 		<li style="color:rgb(255, 255, 255)">
-<a href="https://saas.hp.com/software/AppPulse-mobile" target="_blank">HP AppPulse</a> (mobile)</li>
+<a href="https://saas.hp.com/software/AppPulse-mobile" target="_blank">HP AppPulse</a> (paid, mobile)</li>
 	</ul>
 	</li>
 </ul>
-</div></div></section><section data-id="7cfb6d1be91a3fa667a7fb1b193a8d50"><div class="sl-block" data-block-type="text" style="width: 800px; left: 115px; top: 97px; height: auto;" data-block-id="39ecec111487f45b8b4b935cb8040a91"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
-<h2>Recursos</h2>
+</div></div></section><section data-id="7cfb6d1be91a3fa667a7fb1b193a8d50"><div class="sl-block" data-block-type="text" style="width: 800px; left: 122px; top: 97px; height: auto;" data-block-id="39ecec111487f45b8b4b935cb8040a91"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Resources</h2>
 </div></div>
 <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 235px; height: auto;" data-block-id="0090cd1f6c6cd4ccdbe1267a1e2101ef"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
 <ul>
-	<li>Link a las slides<br>
+	<li>Link to slides<br>
 	<a href="http://www.diegocard.com/testinguy" target="_blank">diegocard.com/testinguy</a>
 </li>
 	<li>RAIL<br>
 	<a href="http://bit.ly/rail-performance" target="_blank">http://bit.ly/rail-performance</a>
 </li>
-	<li>Guia de testing de performance de Microsoft<br>
+	<li>Microsoft's performance testing guidelines<br>
 	<a href="https://msdn.microsoft.com/en-us/library/bb924375.aspx" target="_blank">http://bit.ly/microsoft-performance</a>
 </li>
 </ul>
@@ -224,12 +223,12 @@ PERFORMANCE</h1>
 <h3>dcardozo@netsuite.com<br>
 @diecard</h3>
 </div></div>
-<div class="sl-block" data-block-type="shape" data-block-id="9d29f89cbd17347dbf3803ca6cc70c19" style="min-width: 4px; min-height: 4px; width: 93px; height: 93px; left: 278px; top: 73px;"><div class="sl-block-content" data-shape-type="symbol-camera" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="true" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 255)"><path d="M16 20c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4-2.209 0-4-1.791-4-4zM28 8l-3.289-6.643c-0.27-0.789-1.016-1.357-1.899-1.357h-5.492c-0.893 0-1.646 0.582-1.904 1.385l-3.412 6.615h-8.004c-2.209 0-4 1.791-4 4v20h32v-20c0-2.209-1.789-4-4-4zM6 16c-1.105 0-2-0.895-2-2s0.895-2 2-2 2 0.895 2 2-0.895 2-2 2zM20 28c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"></path></g></svg></div></div></section>
+<div class="sl-block" data-block-type="shape" data-block-id="9d29f89cbd17347dbf3803ca6cc70c19" style="min-width: 4px; min-height: 4px; width: 93px; height: 93px; left: 275px; top: 73px;"><div class="sl-block-content" data-shape-type="symbol-camera" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="true" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 255)"><path d="M16 20c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4-2.209 0-4-1.791-4-4zM28 8l-3.289-6.643c-0.27-0.789-1.016-1.357-1.899-1.357h-5.492c-0.893 0-1.646 0.582-1.904 1.385l-3.412 6.615h-8.004c-2.209 0-4 1.791-4 4v20h32v-20c0-2.209-1.789-4-4-4zM6 16c-1.105 0-2-0.895-2-2s0.895-2 2-2 2 0.895 2 2-0.895 2-2 2zM20 28c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"></path></g></svg></div></div></section>
 			</div>
 		</div>
 
 		<script>
-			var SLConfig = {"deck": {"id":678650,"slug":"testinguy","title":"Testeando performance sin morir en el intento","description":"Presetación para TestingUY 2016","visibility":"all","published_at":"2016-04-25T17:45:43.860Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/96b8188d81b82211f250071c278b6fc5/thumb.jpg","view_count":1,"user":{"id":63754,"username":"diegocard","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/350edaf6de1a9a1beb1ac87dc1fc39de?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","beta_collaboration":false,"pro":true,"enterprise":false,"enterprise_manager":false,"settings":{"id":3717,"present_controls":false,"present_upsizing":true,"present_notes":true},"registered":true},"background_transition":"fade","transition":"default","theme_id":null,"theme_font":"montserrat","theme_color":"blue-yellow","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":false,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":false,"rtl":false,"version":2,"collaborative":false,"notes":{}}};
+			var SLConfig = {"deck": {"id":686306,"slug":"testinguy-en","title":"Test performance and not die trying","description":"Presented at TestingUY 2016","visibility":"all","published_at":"2016-05-02T21:53:28.167Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/b3da62abd4575e089497885d434deab1/thumb.jpg","view_count":0,"user":{"id":63754,"username":"diegocard","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/350edaf6de1a9a1beb1ac87dc1fc39de?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","beta_collaboration":false,"pro":true,"enterprise":false,"enterprise_manager":false,"settings":{"id":3717,"present_controls":false,"present_upsizing":true,"present_notes":true},"registered":true},"background_transition":"fade","transition":"default","theme_id":null,"theme_font":"montserrat","theme_color":"blue-yellow","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":false,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":false,"rtl":false,"version":2,"collaborative":false,"notes":{}}};
 			SLConfig.current_user = {
 				name: "",
 				username: "diegocard",
